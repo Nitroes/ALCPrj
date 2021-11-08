@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>UserInfo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    <link href="../css/style.my.css" rel="stylesheet">
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery.form.js"></script>
+</head>
+<body>
+<div class="myBg"></div>
+<div class="container py-3 bg-white">
+    <header class="mb-3 border-bottom">
+        <nav class="navbar navbar-expand-sm navbar-light bg-white" aria-label="Second navbar example">
+            <div class="container-fluid">
+                <h4 class="navbar-brand">Info</h4>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../page/app_manage.html">AppManage</a>
+                        </li>
+                    </ul>
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../images/icon.jpg" alt="mdo" width="32" height="32" class="rounded-circle user-icon">
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser">
+                            <li><a class="dropdown-item" href="../page/user_info.html"><i class="bi bi-file-earmark-person-fill m-2"></i>Info</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-nut-fill m-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../Login/LoginOut"><i class="bi bi-box-arrow-right m-2"></i>Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="p-lg-5">
+            <form id="userFrom" action="/UserInfo/UpdataImg" method="post" enctype="multipart/form-data">
+                <div class="col-12">
+                    <div class="col-12">
+                        <img src="../images/icon.jpg" alt="mdo" width="64" height="64" class="rounded-circle">
+                        <label class="btn btn-primary" for="userImgFile">更改头像</label>
+                        <input id="userImgFile" class="d-none" type="file" name="multipartFile">
+                    </div>
+                    <hr class="my-4">
+                    <button class="btn btn-success w-100" >submit</button>
+                </div>
+
+
+            </form>
+        </div>
+    </main>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; 2021 Company, Inc</p>
+
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+    </footer>
+</div>
+<!--<div class="modal modal-loading fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-body p-4 text-center">
+                <div class="spinner-border"></div>
+                <h5 class="mb-0 modal-text d-none"></h5>
+            </div>
+            <div class="modal-footer flex-nowrap p-0  d-none">
+                <button type="button" class="btn btn-lg btn-link fs-12 text-decoration-none col-12 m-0 rounded-0" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<script src="../bootstrap/js/bootstrap.bundle.js" charset="utf-8"></script>
+<script src="../js/modal.js" charset="utf-8"></script>
+<script src="../js/alcprj.js" charset="utf-8"></script>
+<script>
+    $from=$("#userFrom");
+    $.LoadUserIcon(function (url){
+        $(".user-icon").attr("src",url);
+    })
+    $from.submit(function (){
+        $from.ajaxSubmit({
+            beforeSubmit: function(arr, $form, options){
+                $.ModalLoading.create();
+                $.ModalLoading.show();
+            },
+            success:function (data){
+                $.ModalLoading.msg("提交成功");
+                $(".user-icon").attr("src",data.msg);
+            },
+            error:function (){
+                $.ModalLoading.msg("提交失败");
+            }
+        })
+        return false;
+    });
+    /*-上传图片更改img-*/
+    $from.find("#userImgFile").change(function (){
+        var $file=$(this);
+        var imgFile=$file[0];
+        var windowURL = window.URL || window.webkitURL;
+        var dataURL;
+        var $img = $from.find("img");
+
+        if (imgFile && imgFile.files && imgFile.files[0]) {
+            dataURL = windowURL.createObjectURL(imgFile.files[0]);
+            $img.attr('src', dataURL);
+        } else {
+            dataURL = $file.val();
+            var imgObj = document.getElementById("preview");
+            imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+            imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+        }
+    });
+</script>
+</body>
+</html>
