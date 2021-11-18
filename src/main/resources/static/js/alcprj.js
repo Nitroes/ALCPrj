@@ -57,7 +57,7 @@ $.fn.GetAppFile=function (){
     }
 }
 
-MouseImg();
+//MouseImg();
 function MouseImg(){
     $("body").prepend('<div class="mouse-img"></div>')
     let img = document.querySelector('.mouse-img')
