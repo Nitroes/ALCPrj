@@ -20,50 +20,22 @@
 <body >
 <div class="myBg"></div>
 <div class="container py-3 bg-white">
-    <header class="mb-3 border-bottom">
-        <nav class="navbar navbar-expand-sm navbar-light bg-white" aria-label="Second navbar example">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="../page/app_manage.html">AppManage</a>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="../">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="../page/app_manage.html">AppManage</a>
-                        </li>
-                    </ul>
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../images/icon.jpg" alt="mdo" width="32" height="32" class="rounded-circle user-icon">
-                        </a>
-                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="../page/user_info.html"><i class="bi bi-file-earmark-person-fill m-2"></i>Info</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-nut-fill m-2"></i>Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="../Login/LoginOut"><i class="bi bi-box-arrow-right m-2"></i>Sign out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header class="mb-3 border-bottom"></header>
     <main>
         <!--------------------------------------MainPage---------------------------------------------------->
         <div class="g-0 p-2 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <h4 class="mb-lg-4">网站管理</h4>
             <div class="app-url-container">
 
-                <a class="m-2 clearfix  text-decoration-none app-item" href="javascript:;" value="1">
-                    <i class="bi bi-star position-absolute ms-1 mt-1"></i>
-<!--                    <i class="bi bi-star-fill"></i>-->
-                    <img class="border rounded" width="64" height="64" src="../images/icon.jpg">
-                    <h6 class="text-center text-black">123</h6>
-                </a>
+<!--                <a class="m-2 clearfix border rounded  text-decoration-none app-item p-1 shadow-sm" href="javascript:;" value="1">-->
+<!--                    <i class="bi bi-star position-absolute ms-xl-1 mt-xl-1 text-danger"></i>-->
+<!--&lt;!&ndash;                    <i class="bi bi-star-fill"></i>&ndash;&gt;-->
+<!--                    <img class="mx-lg-3 my-lg-1" width="45" height="45" src="../images/icon.jpg">-->
+<!--                    <h6 class="text-center text-black mb-0">123</h6>-->
+<!--                </a>-->
 
-
-                <a class="add-url clearfix m-2" href="javascript:;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                <a class="add-url clearfix " href="javascript:;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="82" height="82" fill="currentColor" class="bi m-2 bi-plus-square" viewBox="0 0 16 16">
                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                     </svg>
@@ -73,9 +45,9 @@
 
         <div class="g-0 p-2 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <h4 class="mb-lg-4">文件管理</h4>
-            <div>
-                <a class="add-file clearfix m-2" href="javascript:;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+            <div class="app-file-container">
+                <a class="add-file clearfix " href="javascript:;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="82" height="82" fill="currentColor" class="bi m-2 bi-plus-square" viewBox="0 0 16 16">
                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                     </svg>
@@ -128,8 +100,7 @@
         </div>
     </div>
 </div>
-
-<div class="modal modal-add-file fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal modal-add-file fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-5">
             <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -138,13 +109,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-5 pt-0">
-                <form class="add-url-from" action="../AppManage/AddUrl" method="post">
+                <form class="add-file-from" action="../AppManage/AddAppFile" method="post">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-4" id="FileName" placeholder="Text">
+                        <input type="text" class="form-control rounded-4" name="fileName" id="FileName" placeholder="Text">
                         <label for="FileName">名称</label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="file" >
+                    <div class="mb-3 col-12">
+                        <label class="btn btn-warning text-white"  for="upLoadFile">选择文件</label>
+                        <input class="d-none" type="file" id="upLoadFile" name="upLoadFile">
                     </div>
                     <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">添加</button>
                 </form>
@@ -204,7 +176,46 @@
         })
         return false;
     });
+    $fromFile=$(".add-file-from");
+    // console.log($fromFile.find("input[type='file']"));
+    $fromFile.submit(function (){
+        $fromFile.ajaxSubmit({
+            beforeSubmit: function(arr, $form, options){
+                console.log(arr);
+                $.ModalAlert.create();
+                if(arr[0].value==""){
+                    $.ModalAlert.show({
+                        msg:"名称不能为空"
+                    });
+                    return false;
+                }
+                // arr[arr.length]={name: "urlImg", value: arr[1].value+"/favicon.ico", type: "text", required: false}
+                 $.ModalProgress.create();
+                 $.ModalProgress.show();
+                // return false;
+            },
+            uploadProgress:function (event, position, total, percentComplete){
+                $.ModalProgress.progress(percentComplete);
+                console.log(percentComplete);
+            },
+            success:function (data){
+                if(data.status==1){
+                    modalFile.hide();
+                }
+                if(data.status=="fail"){
+                    $.ModalAlert.show({
+                        msg:"已有相同文件"
+                    });
+                }
+            },
+            error:function (){
+
+            }
+        })
+        return false;
+    });
     $(".app-url-container").GetAppUrl();
+    $(".app-file-container").GetAppFile();
 </script>
 </body>
 </html>

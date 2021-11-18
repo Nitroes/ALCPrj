@@ -7,6 +7,7 @@ import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 import top.aliceproject.alcprj.entity.UserInfo;
 import top.aliceproject.alcprj.mapper.UserInfoMapper;
+import top.aliceproject.alcprj.utils.ALCFileUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -25,21 +26,12 @@ public class UserInfoService {
         Map<String,Object> res=new HashMap<>();
         String userId = request.getSession().getAttribute("userId").toString();
         /*-------------------保存图片-------------------*/
-        String path="file/"+userId+"/";
-        //调试路径
-//        String sourcePath= ClassUtils.getDefaultClassLoader().getResource("").getPath()+"static/";
-        //服务器路径
-        String sourcePath= "/www/wwwroot/SpringBoot/ALCPrj/";
-        String suffix=multipartFile.getOriginalFilename();
-        suffix=suffix.substring(suffix.lastIndexOf("."));
-        String fileName=userId+suffix;
-        File file=new File(sourcePath+path,fileName);
-        if(!file.exists()) file.mkdirs();
-        multipartFile.transferTo(file);
+        ALCFileUtils alcFileUtils=new ALCFileUtils();
+        String urlPath=alcFileUtils.saveFile(multipartFile,userId,userId);
         /*--------------------------------------------*/
         UserInfo userInfo=new UserInfo();
         userInfo.setUserId(userId);
-        userInfo.setImgUrl("../"+path+fileName);
+        userInfo.setImgUrl(urlPath);
         if (userInfoMapper.getUserInfo(userId).size()>0) {
             userInfoMapper.updateUserInfo(userInfo);
         }else {

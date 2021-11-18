@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import top.aliceproject.alcprj.entity.AppFile;
 import top.aliceproject.alcprj.entity.AppUrl;
 import top.aliceproject.alcprj.service.AppManageService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +42,7 @@ public class AppManageController {
     }
 
     @PostMapping("/AddAppFile")
-    public Map<String,Object> addAppFile(HttpServletRequest request, AppFile appFile){
-        return service.addAppFile(request,appFile);
+    public Map<String,Object> addAppFile(MultipartFile upLoadFile,HttpServletRequest request,  AppFile appFile) throws IOException {
+        return service.addAppFile(upLoadFile,request,appFile);
     }
 }
